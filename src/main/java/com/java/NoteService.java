@@ -19,4 +19,7 @@ public class NoteService{
 	public void save(Notes note) {
 		note4.save(note);
 	}
+	public void delete(Long stt) {
+		note4.deleteById(stt);
+	}
 }

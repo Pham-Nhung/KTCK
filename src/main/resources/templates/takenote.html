@@ -19,16 +19,6 @@
 		<div style= "margin-bottom: 70px">
 			<h1>All Notes</h1>
 		</div>
-
-		<!-- 	<div>
-		<form style="margin-bottom:20px" th:action="@{/takenoteByuser}">
-		FilterByUser:
-		<input type="text" name="emails" th:value="${emails}">
-		&nbsp;
-		<input type="submit" value="Search"/>
-		</form>
-	</div> -->
-
 		<div>
 			<table class="table table-strped table-bordered">
 				<thead class="thead-dark">
@@ -36,7 +26,8 @@
 						<th>Title</th>
 						<th>Content</th>
 						<th>Date</th>
-
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,6 +35,10 @@
 						<td th:text="${note.tieude}">Title</td>
 						<td th:text="${note.noidung}">Content</td>
 						<td th:text="${note.ngaytao}">Date</td>
+						<td><a th:href="@{'/deleted/' + ${note.stt}}"
+							class="btn btn-primary" style="background-color:red" onclick="return confirm('Are you sure?');">Del Notes</a>
+					    </td>
+					    <td><a th:href="@{/takenote}" class="btn btn-primary">AddNote</a></td>
 					</tr>
 				</tbody>
 			</table>

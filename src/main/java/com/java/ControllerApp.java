@@ -26,6 +26,8 @@ public class ControllerApp {
 	private UserService repo3;
 	@Autowired
 	private NoteService note2;
+	@Autowired
+	private NoteRepository note;
 	@GetMapping("")
 	public String home() {
 		return "homepage";
@@ -78,9 +80,19 @@ public class ControllerApp {
 
 	
 	@RequestMapping("/delete/{id}")
-	public String deleteUser(@PathVariable(name ="id") Long id) {
+	public String deleteUser(Model model,@PathVariable(name ="id") Long id) {
 		repo3.delete(id);
-		return "redirect:/";
+		List<User> listUsers = repo.findAll();
+		model.addAttribute("listUsers", listUsers);
+		return "users";
+	}
+	
+	@RequestMapping("/deleted/{stt}")
+	public String deleteNotes(@PathVariable(name = "stt") Long stt, Model model) {
+		note2.delete(stt);
+		List<Notes> listnote = note.findAll();
+		model.addAttribute("takenote1", listnote);
+		return "takenote";
 	}
 	
 }
