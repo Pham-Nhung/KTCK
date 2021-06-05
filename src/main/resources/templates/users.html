@@ -18,23 +18,24 @@
 		<div>
 			<h1>List of all users</h1>
 		</div>
+		<div><a th:href="@{/takenotes}" class="btn btn-primary" >All Note</a>
+		<a th:href="@{/takenote}" class="btn btn-primary">AddNote</a></div>
 		<div>
 			<table class="table table-strped table-bordered">
 				<thead class="thead-dark">
 					<tr>
 						<th>User ID</th>
 						<th>E-mail</th>
-						<th></th>
-						<th></th>
-						<th></th>
+						
+						<th>View</th>
+						<th>Del</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr th:each="user: ${listUsers}">
 						<td th:text="${user.id}">User ID</td>
 						<td th:text="${user.email}">Email</td>
-						<td><a th:href="@{/takenote}" class="btn btn-primary">AddNote</a></td>
-						<td><a th:href="@{/takenotes}" class="btn btn-primary">Review</a></td>
+						<td><a th:href="@{'/takenotes/filter?user_id=' + ${user.id}}" class="btn btn-primary" >View Notes</a></td>
 						<td><a th:href="@{'/delete/' + ${user.id}}"
 							class="btn btn-primary">Del User</a> 
 						</td>

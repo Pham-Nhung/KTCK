@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit User</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+</head>
+<body style="margin-top: 70px; background-position: center; height: 400%; background-repeat: no-repeat; background-size: cover; background-image: url('https://i.pinimg.com/originals/0a/fd/29/0afd2951b10413352a363ea51b4606ac.jpg')">
+<div align="center">
+	<div class="container text-center">
+		<div>
+			<h1 style="margin-top: 40px">Edit Note</h1>
+		</div>
+
+		<form th:action="@{/notes/update}" 
+	method="post" style="max-width: 600px;margin: 0 auto">
+			<div class="m-3">
+
+				<div class="form-group row">
+					<label class="col-form-label col-4" for="title">Title</label>
+					<div class="col-8">
+						<input type="text" class="form-control"  name="title" th:value="${note.tieude}"
+						 />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-form-label col-4">Content</label>
+					<div class="col-8">
+						<input type="text" class="form-control"  name="content" th:value="${note.noidung}"
+						 />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-form-label col-4" for="ngaytao">Ngay tao</label>
+					<div class="col-8">
+						<input type="date" class="form-control"  name="ngaytao" th:field="${note.ngaytao}"/>
+					</div>
+				</div>
+			</div>
+			<div>
+			 <input type="hidden" name="stt" th:value="${note.stt}" />
+				<button type="submit" class="btn btn-primary">Save</button>
+			</div>
+		</form>
+	</div>
+	</div>
+</body>
+</html>

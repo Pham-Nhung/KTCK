@@ -9,5 +9,5 @@ public interface NoteRepository extends JpaRepository<Notes, Long> {
 	 	@Query("SELECT n FROM Notes n WHERE lower(n.tieude) lIKE %?1%"
 	 			+ "OR n.tieude lIKE %?1%" + " OR upper(n.tieude) lIKE %?1%")
 	 	public List<Notes>findAll(String keyword);
-		public Notes findByTieude(String keyword);
+	 	List<Notes> findByUser(User user);
 }
